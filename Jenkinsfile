@@ -1,3 +1,5 @@
+def gv
+
 pipeline {
     agent any
     parameters {
@@ -5,21 +7,35 @@ pipeline {
         choice(name: 'QT_VERSION', choices: ['5.15.6', '5.15.2'], description: '')
     }
     stages {
+
+        stage("init") {
+            steps {
+                script {
+		gv = load "script.groovy"
+            }
+        }
+
         stage("build") {
             steps {
-                echo "building the application ${params.QT_VERSION}..."
+		script {
+		    gv.buildApp()
+		}
             }
         }
 
         stage("test") {
             steps {
-                echo 'testing the application...'
+		script {
+		    gv.testApp()
+		}
             }
         }
 
         stage("deploy") {
             steps {
-                echo 'dpeloying the application...'
+		script {
+		    gv.deployApp()
+		}
             }
         }
 
