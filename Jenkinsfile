@@ -18,25 +18,24 @@ pipeline {
 
         stage("build") {
             steps {
-		script {
-		    gv.buildApp()
-		}
+		echo "Build Step for ${params.QT_VERSION}"
+		sh "hostname"
+		sh "uptime"
+		sh "pwd"
             }
         }
 
         stage("test") {
             steps {
-		script {
-		    gv.testApp()
-		}
+		echo "Testing step for ${params.QT_VERSION}"
+		bat "dir"
             }
         }
 
         stage("deploy") {
             steps {
-		script {
-		    gv.deployApp()
-		}
+		echo "Deployinment step for ${params.QT_VERSION}"
+		sh adb
             }
         }
 
