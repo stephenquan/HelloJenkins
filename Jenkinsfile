@@ -8,24 +8,26 @@ pipeline {
 
         stage("build") {
             steps {
-		echo "Build Step for ${params.QT_VERSION}"
-		sh "hostname"
-		sh "uptime"
-		sh "pwd"
+                echo "Build Step for ${params.QT_VERSION}"
+                sh "#!/bin/bash \n" +
+                "echo \"Hello from \$SHELL\""
+                # sh "hostname"
+                # sh "uptime"
+                # sh "pwd"
             }
         }
 
         stage("test") {
             steps {
-		echo "Testing step for ${params.QT_VERSION}"
-		bat "dir"
+                echo "Testing step for ${params.QT_VERSION}"
+                # bat "dir"
             }
         }
 
         stage("deploy") {
             steps {
-		echo "Deployinment step for ${params.QT_VERSION}"
-		sh "adb"
+                echo "Deployinment step for ${params.QT_VERSION}"
+                # sh "adb"
             }
         }
 
