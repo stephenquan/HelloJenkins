@@ -7,7 +7,7 @@ pipeline {
     stages {
         stage("build") {
             steps {
-                echo 'building the application ${params.QT_VERSION}...'
+                echo "building the application ${params.QT_VERSION}..."
             }
         }
 
