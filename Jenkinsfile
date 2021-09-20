@@ -1,5 +1,3 @@
-def gv
-
 pipeline {
     agent any
     parameters {
@@ -7,14 +5,6 @@ pipeline {
         choice(name: 'QT_VERSION', choices: ['5.15.6', '5.15.2'], description: '')
     }
     stages {
-
-        stage("init") {
-            steps {
-                script {
-		    gv = load "script.groovy"
-		}
-            }
-        }
 
         stage("build") {
             steps {
@@ -35,7 +25,7 @@ pipeline {
         stage("deploy") {
             steps {
 		echo "Deployinment step for ${params.QT_VERSION}"
-		sh adb
+		sh "adb"
             }
         }
 
