@@ -15,6 +15,7 @@ pipeline {
         stage("test") {
             steps {
                 echo "Testing step for ${params.QT_VERSION}"
+                sh "hostname"
             }
         }
 
